@@ -3,23 +3,23 @@ apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
   name: atc-web-frontend
-  namespace: jenkins-dind
+  namespace: jenkins-dind-test
 spec:
   replicas: 1
   selector:
-    namespace: jenkins-dind
+    namespace: jenkins-dind-test
     app: atc-web-frontend
     deploymentConfig: atc-web-frontend
   template:
     metadata:
       labels:
-        namespace: jenkins-dind
+        namespace: jenkins-dind-test
         app: atc-web-frontend
         deploymentConfig: atc-web-frontend
     spec:
       containers:
       - name: atc-web-frontend
-        image: image-registry.openshift-image-registry.svc:5000/jenkins-dind/atc-web-frontend:latest
+        image: image-registry.openshift-image-registry.svc:5000/jenkins-dind-test/atc-web-frontend:latest
         ports:
         - containerPort: 8763
   strategy:
